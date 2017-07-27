@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+    Input Palindrome:<br>
+    <input id="input_text" type="text" value="A Santa at Nasa"><br>
+    Reversed:<br>
+    <input id="output_reversed" type="text" readonly><br>
+    No Spaces:<br>
+    <input id="output_nospaces" type="text" readonly><br>
+    Palindrome ?:<br>
+    <input id="output_ispalindrome" type="checkbox" readonly><br>
+    <button id="submit">Check</button>
+</div>
+<script>
+document.getElementById("submit").addEventListener("click", function(){
+    onButtonClick();
+});
+
+
+
+function onButtonClick(){
+    var input_text = document.getElementById("input_text").value;
+
+    var reversedText = reverseText(input_text);
+    var removedSpaces = removeSpaces(reversedText);
+    var isPalindrome = checkIsPalindrome(reversedText);
+
+    document.getElementById("output_reversed").value = reversedText;
+    document.getElementById("output_nospaces").value = removedSpaces;
+    document.getElementById("output_ispalindrome").checked =  isPalindrome;
+}
+
+function reverseText(input_text){
+    var reversedText = "";
+    // reverse code goes here
+    return reversedText;
+}
+
+function removeSpaces(input_text){
+    var noSpacesText = "";
+    // Code to remove spaces
+
+    return noSpacesText;
+}
+
+function checkIsPalindrome(input_text){
+    // check is palindrome code goes here
+
+    return false;
+}
+
+</script>
+</body>
+</html>+

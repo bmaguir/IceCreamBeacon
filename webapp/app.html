@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IceCreamBeacon</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Weather PWA">
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
+  <link rel="stylesheet" type="text/css" href="styles/index.css">
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.js"></script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA10isfCBC5gSTi-s4zw_YTQF1p4AkP8Gs">
+  </script>
+</head>
+<body class="container">
+
+ <ul id="tabs-swipe-demo" class="tabs">
+    <li class="tab col s3"><a class="active" href="#test-swipe-1">IceCream</a></li>
+    <li class="tab col s3"><a href="#test-swipe-2">Map</a></li>
+ </ul>
+  <div id="test-swipe-1" class="col s12 ">
+    <div class="card">
+      <div style="text-align:center">
+        <button class="icecream" id="icecreambutton">I Want Ice Cream</button>
+      </div>
+    </div>
+  </div>
+  <div id="test-swipe-2" class="col s12">
+    <div class="card">
+      <div>
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--<header class="header">-->
+    <!--<h1 class="header__title">IceCreamBeacon</h1>-->
+    <!--<button id="butRefresh" class="headerButton"></button>-->
+    <!--<button id="butAdd" class="headerButton"></button>-->
+  <!--</header>-->
+
+  <!--<main class="app">-->
+  <!--<div id="main_page">-->
+    <!--<div class="row">-->
+       <!--<div class="col s12 m7">-->
+         <!--<div class="card">-->
+         <!--<div style="text-align:center">-->
+          <!--<button class="icecream" id="icecreambutton">I Want Ice Cream</button>-->
+          <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+     <!--</div>-->
+  <!--</div>-->
+  <!--</main>-->
+<!--</div>-->
+ <!--<script>-->
+      <!--function initMap() {-->
+        <!--var uluru = {lat: -25.363, lng: 131.044};-->
+        <!--var map = new google.maps.Map(document.getElementById('map'), {-->
+          <!--zoom: 4,-->
+          <!--center: uluru-->
+        <!--});-->
+        <!--var marker = new google.maps.Marker({-->
+          <!--position: uluru,-->
+          <!--map: map-->
+        <!--});-->
+      <!--}-->
+    <!--</script>-->
+   <script src="scripts/app.js"></script>
+</body>
+  <script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+  </script>
+</html>

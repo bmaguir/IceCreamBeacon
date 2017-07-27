@@ -1,0 +1,48 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+# [START handlers]
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /bootstrap
+  static_dir: bootstrap
+
+- url: /scripts
+  static_dir: webapp/scripts
+
+- url: /styles
+  static_dir: webapp/styles
+
+- url: /images
+  static_dir: webapp/images
+
+- url: /app
+  static_files: webapp/app.html
+  upload: webapp/app.html
+
+- url: /hellodojo
+  static_files: webapp/hellodojo.html
+  upload: webapp/hellodojo.html
+
+- url: /palindrome
+  static_files: webapp/palindrome.html
+  upload: webapp/palindrome.html
+
+- url: /ticktactoe
+  static_files: webapp/ticktactoe.html
+  upload: webapp/ticktactoe.html
+
+- url: /api/Beacon
+  script: IceCreamBeacon.app
+
+# [END handlers]
+
+# [START libraries]
+libraries:
+- name: webapp2
+  version: latest
+# [END libraries]

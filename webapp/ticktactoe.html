@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Tic Tac Toe</title>
+    </head>
+
+    <body>
+    <style>
+            .square {
+                width: 15px;
+            }
+            .score{
+                width: 40px;
+            }
+        </style>
+        <h1>Tic Tac Toe</h1>
+            <div id="board">
+                <input class="square" id="00" type="text" value=" " readonly>
+                <input class="square" id="01" type="text" value=" " readonly>
+                <input class="square" id="02" type="text" value=" " readonly><br>
+                <input class="square" id="10" type="text" value=" " readonly>
+                <input class="square" id="11" type="text" value=" " readonly>
+                <input class="square" id="12" type="text" value=" " readonly><br>
+                <input class="square" id="20" type="text" value=" " readonly>
+                <input class="square" id="21" type="text" value=" " readonly>
+                <input class="square" id="22" type="text" value=" " readonly><br>
+            </div>
+
+            <h2>Scores</h2>
+            <b>X : </b> <input class="score" id="x_score" type="number" value=0 readonly>
+            <b>Y : </b> <input class="score" id="y_score" type="number" value=0 readonly>
+
+            <script>
+            var board_size = 3;
+            var board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']];
+            var current_turn = 'X'
+
+            for(var i=0; i<board_size; i++){
+                for(var j=0; j<board_size; j++){
+                    var square_id = String(i) + String(j)
+                    document.getElementById(square_id).addEventListener("click", function()
+                     {
+                        onSquareClick(this.id);
+                    });
+                }
+            }
+
+function onSquareClick(id){
+
+    if(check_square_free(id)){
+        document.getElementById(id).value = current_turn;
+        board[parseInt(id[0])][parseInt(id[1])] = current_turn;
+
+        if(check_for_draw(board)){
+            alert("It's a Draw");
+            reset_game();
+        }
+        if(check_for_win(board)){
+            alert(current_turn + " Wins");
+            update_score(current_turn);
+            reset_game();
+        }
+
+        current_turn = swap_current_turn(current_turn);
+
+    }
+}
+
+function swap_current_turn(c_turn){
+    // TODO write code to swap turn from 'X' to 'O'
+        return 'X';
+}
+
+function check_for_draw(input_board){
+    // TODO write code to check for a draw. function takes a 2d array of the board
+    return false;
+}
+
+function check_for_win(input_board){
+    // TODO write code to chack for a winner. function takes 2d array
+    return false;
+}
+
+function reset_game(){
+    // TODO reset the game ready for a new round.
+
+}
+
+function check_square_free(id){
+    // TODO wirte code to check if square is free or not
+    current_value = document.getElementById(id).value;
+    return true;
+}
+
+function update_score(pplayer){
+    // TODO update the winning players score
+}
+</script>
+    </body>
+</html>
