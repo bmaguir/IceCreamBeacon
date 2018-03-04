@@ -4,6 +4,7 @@ import {Card, CardBody, CardTitle} from 'reactstrap';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 const GOOGLE_API_KEY = "AIzaSyC_2wVlffhsUiFFqkWbKw2jVex_6OCMSOM";
+const GET_BEACON_PATH = "/api/Beacon";
 
 export default class Map extends Component {
 
@@ -14,13 +15,15 @@ export default class Map extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { width: 1, height: 1 };
+    this.state = { width: 1, height: 1, city: "Dublin", markerList: {}};
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.getBeacons = this.getBeacons.bind(this);
   }
 
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
+    this.getBeacons()
   }
 
   componentWillUnmount() {
@@ -32,8 +35,42 @@ export default class Map extends Component {
     console.log("width = " + window.innerWidth + ", heigth = " + window.innerHeight)
   }
 
+  getBeacons(){
+    const host = window.location.hostname;
+    var location = this.props.center
+    var url = GET_BEACON_PATH
+    var sendData = {
+        "latitude": location['lat'],
+        "longitude": location['lng'],
+        "city": this.state.city
+    }
+    console.log(sendData);
+    // axios.get(url, {params: sendData})
+    // .then(function (response) {
+    //   if(resonse.status == 200 && response.data){
+    //     this.setState({markerList: response.data})
+    //   }
+    //   console.log(response);
+    // })
+    this.setState({markerList: this.props.markerList})
+}
+
   render() {
-    const markers = this.props.markerList.map(m => <AnyReactComponent id={m.lat + m.lng} lat={m.lat} lng={m.lng} icon={'*'}/>)
+    const markers = this.state.markerList.map(
+       l=> { 
+         return (<AnyReactComponent 
+         id={l.location.lat + l.location.lng} 
+         lat={l.location.lat} 
+         lng={l.location.lng} 
+         icon={'*'}
+         />)
+       }
+        );
+    const heatmapLocatons = this.state.markerList.map(
+      k => {
+        return l.location
+      }
+    );
 
     return (
       <div style={{width: this.state.width*0.5 + "px", height: this.state.height*0.8 + "px"}}>
@@ -44,7 +81,7 @@ export default class Map extends Component {
           heatmapLibrary={true}
           heatmap={{
             positions: 
-              this.props.markerList,
+              heatmapLocatons,
             options: {
               radius: 20,
               opacity: 0.7,
