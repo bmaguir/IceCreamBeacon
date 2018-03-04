@@ -1,10 +1,14 @@
 import GoogleMapReact from 'google-map-react';
 import React, {Component} from 'react';
-import {Card, CardBody, CardTitle} from 'reactstrap';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 const GOOGLE_API_KEY = "AIzaSyC_2wVlffhsUiFFqkWbKw2jVex_6OCMSOM";
 const GET_BEACON_PATH = "/api/Beacon";
+
+const TEST_MARKERS = [
+  {'location': {'lat': 53.38299530795734, 'lng': -6.244525906923855}},
+  {'location': {'lat': 53.35380424853437, 'lng': -6.273193356875026}}
+]
 
 export default class Map extends Component {
 
@@ -15,7 +19,7 @@ export default class Map extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { width: 1, height: 1, city: "Dublin", markerList: {}};
+    this.state = { width: 1, height: 1, city: "Dublin", markerList: []};
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     this.getBeacons = this.getBeacons.bind(this);
   }
@@ -52,7 +56,7 @@ export default class Map extends Component {
     //   }
     //   console.log(response);
     // })
-    this.setState({markerList: this.props.markerList})
+    this.setState({markerList: TEST_MARKERS})
 }
 
   render() {
@@ -67,7 +71,7 @@ export default class Map extends Component {
        }
         );
     const heatmapLocatons = this.state.markerList.map(
-      k => {
+      l => {
         return l.location
       }
     );
