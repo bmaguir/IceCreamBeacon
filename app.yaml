@@ -39,6 +39,17 @@ handlers:
 - url: /api/Beacon
   script: IceCreamBeacon.app
 
+- url: /ui/app
+  static_files: webapp/ice-cream-beacon/build/index.html
+  upload: webapp/ice-cream-beacon/build/index.html
+
+- url: /static/css/main.f948cb4e.css
+  static_files: webapp/ice-cream-beacon/build/static/css/main.f948cb4e.css
+  upload: webapp/ice-cream-beacon/build/static/css/main.f948cb4e.css
+
+- url: /static/js/main.ab6c6db5.js
+  static_files: webapp/ice-cream-beacon/build/static/js/main.ab6c6db5.js
+  upload: webapp/ice-cream-beacon/build/static/js/main.ab6c6db5.js
 # [END handlers]
 
 # [START libraries]
@@ -46,3 +57,12 @@ libraries:
 - name: webapp2
   version: latest
 # [END libraries]
+
+skip_files:
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\..*$
+- ^(.*/)?.*\.bak$
+- webapp/ice-cream-beacon/node_modules
