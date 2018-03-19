@@ -1,9 +1,11 @@
 import GoogleMapReact from 'google-map-react';
 import React, {Component} from 'react';
+import axios from 'axios'
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 const GOOGLE_API_KEY = "AIzaSyC_2wVlffhsUiFFqkWbKw2jVex_6OCMSOM";
 const GET_BEACON_PATH = "/api/Beacon";
+const DEFAULT_CITY = "Dublin"
 
 const TEST_MARKERS = [
   {'location': {'lat': 53.38299530795734, 'lng': -6.244525906923855}},
@@ -19,7 +21,7 @@ export default class Map extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { width: 1, height: 1, city: "Dublin", markerList: []};
+    this.state = { width: 1, height: 1, city: DEFAULT_CITY, markerList: []};
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     this.getBeacons = this.getBeacons.bind(this);
   }
@@ -49,14 +51,14 @@ export default class Map extends Component {
         "city": this.state.city
     }
     console.log(sendData);
-    // axios.get(url, {params: sendData})
-    // .then(function (response) {
-    //   if(resonse.status == 200 && response.data){
-    //     this.setState({markerList: response.data})
-    //   }
-    //   console.log(response);
-    // })
-    this.setState({markerList: TEST_MARKERS})
+    axios.get(url, {params: sendData})
+    .then(response => {
+      if(response.status == 200 && response.data){
+        this.setState({markerList: response.data})
+      }
+      console.log(response);
+    })
+    //this.setState({markerList: TEST_MARKERS})
 }
 
   render() {
